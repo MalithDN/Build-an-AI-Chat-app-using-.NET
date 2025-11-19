@@ -1,15 +1,18 @@
 ﻿.input-box {
-    display: flex; 
-    flex-direction: column; 
-    background: white;
-    border: 1px solid rgb(229, 231, 235);
-    border-radius: 8px;
-    padding: 0.5rem 0.75rem;
-    margin-top: 0.75rem; 
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
 }
 
     .input-box:focus-within {
-        outline: 2px solid #4152d5;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.05);
     }
 
 textarea {
@@ -17,16 +20,25 @@ textarea {
     border: none;
     outline: none;
     flex-grow: 1;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-primary);
+    background: transparent;
 }
 
+    textarea::placeholder {
+        color: var(--text-secondary);
+    }
+
     textarea:placeholder-shown + .tools {
-        --send-button-color: #aaa;
+        --send-button-color: #cbd5e1;
     }
 
 .tools {
-    display: flex; 
-    margin-top: 1rem; 
+    display: flex;
+    margin-top: 0.75rem;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .tool-icon {
@@ -35,23 +47,40 @@ textarea {
 }
 
 .send-button {
-    color: var(--send-button-color);
+    color: var(--send-button-color, var(--primary));
     margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 6px;
 }
 
     .send-button:hover {
-        color: black;
+        color: var(--primary);
+        background-color: rgba(99, 102, 241, 0.1);
+    }
+
+    .send-button:active {
+        transform: scale(0.95);
     }
 
 .attach {
-    background-color: white;
-    border-style: dashed;
-    color: #888;
-    border-color: #888;
-    padding: 3px 8px;
+    background-color: transparent;
+    border: 1px dashed var(--border);
+    color: var(--text-secondary);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
     .attach:hover {
-        background-color: #f0f0f0;
-        color: black;
+        background-color: rgba(99, 102, 241, 0.05);
+        border-color: var(--primary);
+        color: var(--primary);
     }
